@@ -1,26 +1,26 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-}
-
-#task-container {
+  }
+  
+  #task-container {
     margin: 20px 0;
-}
-
-#task-input {
+  }
+  
+  #task-input {
     padding: 5px;
     width: 200px;
-}
-
-#add-button{
+  }
+  
+  #add-button {
     padding: 5px 10px;
-}
-
-ul {
+  }
+  
+  ul {
     list-style-type: none;
     padding: 0;
-}
-
-li {
+  }
+  
+  li {
     margin-bottom: 10px;
-}
+  }  
