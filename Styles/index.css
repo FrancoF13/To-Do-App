@@ -23,4 +23,28 @@ body {
   
   li {
     margin-bottom: 10px;
+    position: relative;
+    animation-name: fadeIn;
+    animation-duration: 0,5s;
+    animation-fill-mode: forwards;
   }  
+
+  @keyframes fadeIn{
+    0% { opacity: 0; transform: translateY(-20px);}
+    100%{ opacity: 1; transform: translateY(0);}
+  }
+
+  .completed {
+    text-decoration: line-through;
+    color: gray;
+  }
+
+  .task-timer {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(100%); }
+  }

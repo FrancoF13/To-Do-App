@@ -15,7 +15,16 @@ function addTask() {
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener('click', deleteTask);
 
+    const timerSpan = document.createElement('span');
+    timerSpan.classList.add(task-timer);
+
+    const timerButton = document.createElement('button');
+    timerButton.textContent = 'Start Timer';
+    timerButton.addEventListener('click', startTimer);
+
     listItem.appendChild(deleteButton);
+    listItem.appendChild(timerSpan);
+    listItem.appendChild(timerButton);
     taskList.appendChild(listItem);
 
     taskInput.value = '';
@@ -27,6 +36,9 @@ function deleteTask() {
   const listItem = this.parentNode;
   taskList.removeChild(listItem);
 }
+
+//Funcion para Iniciar el temporizador Pomodoro
+function
 
 // Agregar evento de clic al botón de agregar tarea
 addButton.addEventListener('click', addTask);
