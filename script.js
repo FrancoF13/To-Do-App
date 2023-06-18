@@ -37,8 +37,36 @@ function deleteTask() {
   taskList.removeChild(listItem);
 }
 
-//Funcion para Iniciar el temporizador Pomodoro
-function
+//Funcion para Iniciar el temporizador del Pomodoro
+function startTimer() {
+  const listItem = this.parentNode;
+  const timerSpan = listItem.querySelector('.taskTimer');
+  const timerButton = listItem.querySelector(button);
+  timerButton.disable = true; 
 
+  let timeLeft = 25 * 60; //25 minutos
+
+const timerInterval = setInterval(() => {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft% 60;
+  timerSpan.textContent = `${minutes}:${seconds.toString().padStrart(2, '0')}`;
+
+  if (timeLeft <= 0) {
+    clearInterval(timerInterval);
+    timerSpan.textContent = 'time is up!';
+    timerSpan.classList.add('completed');
+    timerButton.disable = false;
+  }
+
+    timerleft --;
+  },100);
+}
 // Agregar evento de clic al botón de agregar tarea
 addButton.addEventListener('click', addTask);
+
+//Evento Para agregar una tarea al presionar la tecla "Enter"
+taskInput,addEventListener('Keydown', (event) => {
+  if (event.key === 'Enter') {
+    addTask();
+  }
+});
