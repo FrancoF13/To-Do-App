@@ -15,16 +15,22 @@ function addTask() {
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener('click', deleteTask);
 
+    const timerContainer = document.createElement('div');
+    timerContainer.classList.add('timer-container');
+
     const timerSpan = document.createElement('span');
-    timerSpan.classList.add(task-timer);
+    timerSpan.classList.add('task-timer');
+    timerContainer.appendChild(timerSpan);
 
     const timerButton = document.createElement('button');
     timerButton.textContent = 'Start Timer';
-    timerButton.addEventListener('click', startTimer);
+    timerButton.addEventListener('click', function () {
+      startTimer(timerSpan);
+    });
+    timerContainer.appendChild(timerButton);
 
     listItem.appendChild(deleteButton);
-    listItem.appendChild(timerSpan);
-    listItem.appendChild(timerButton);
+    listItem.appendChild(timerContainer);
     taskList.appendChild(listItem);
 
     taskInput.value = '';
@@ -37,35 +43,35 @@ function deleteTask() {
   taskList.removeChild(listItem);
 }
 
-//Funcion para Iniciar el temporizador del Pomodoro
-function startTimer() {
-  const listItem = this.parentNode;
-  const timerSpan = listItem.querySelector('.taskTimer');
-  const timerButton = listItem.querySelector(button);
-  timerButton.disable = true; 
+// Función para iniciar el temporizador de Pomodoro
+function startTimer(timerSpan) {
+  let timeLeft = 25 * 60; // 25 minutos
 
-  let timeLeft = 25 * 60; //25 minutos
+  const timerInterval = setInterval(() => {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerSpan.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
 
-const timerInterval = setInterval(() => {
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft% 60;
-  timerSpan.textContent = `${minutes}:${seconds.toString().padStrart(2, '0')}`;
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      timerSpan.textContent = 'Time is up!';
+      timerSpan.classList.add('completed');
+    }
 
-  if (timeLeft <= 0) {
-    clearInterval(timerInterval);
-    timerSpan.textContent = 'time is up!';
-    timerSpan.classList.add('completed');
-    timerButton.disable = false;
-  }
+    timeLeft--;
 
-    timerleft --;
-  },100);
+    // Actualizar el temporizador cada segundo
+    if (timeLeft < 0) {
+      clearInterval(timerInterval);
+    }
+  }, 1000);
 }
-// Agregar evento de clic al botón de agregar tarea
+
+// Evento para agregar una tarea al hacer clic en el botón 
 addButton.addEventListener('click', addTask);
 
-//Evento Para agregar una tarea al presionar la tecla "Enter"
-taskInput,addEventListener('Keydown', (event) => {
+// Evento para agregar una tarea al presionar la tecla "Enter" 
+taskInput.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
     addTask();
   }
