@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>To-Do App</title>
+  <title>To-Do App with Pomodoro Timer</title>
   <link rel="stylesheet" type="text/css" href="Styles/index.css">
 </head>
 <body>
   <div class="container">
-    <h1> To-Do App</h1>
-    <input type="text" id="task-input" placeholder="Add a task...">
-    <button id="add-button">Add</button>
-    <ul id="task-list"></ul>
+    <audio id="startSound" src="Styles/sounds/audio-comienzo.mp3"></audio>
+    <audio id="finishSound" src="Styles/sounds/audio-final.mp3"></audio>
+    <audio id="deleteSound" src="Styles/sounds/audio-borrar.mp3"></audio>
+
+    <div class="mode-toggle">
+      <button id="day-mode-button">Day Mode</button>
+      <button id="night-mode-button">Night Mode</button>
+    </div>    
+
+    <h1>To-Do App Pomodoro</h1>
+    <div id="todo-container">
+      <input type="text" id="task-input" placeholder="Enter task">
+      <button id="add-button">Add</button>
+      <ul id="task-list"></ul>
+    </div>
   </div>
- 
+
   <script src="script.js"></script>
 </body>
 </html>
